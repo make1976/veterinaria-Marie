@@ -2,47 +2,11 @@ import { useState } from 'react';
 
 export const Formulario = () => {
 
-    const [nombreMascota, setNombreMascota] = useState('');
-    const [dueno, setNombreDueno] = useState('');
-    const [email, setEmail] = useState('');
-    const [Date, setDate] = useState('');
-    const [Area, setArea] = useState('');
-    const [sintomas, setSintomas] = useState('');
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //1-Objeto de paciente
-        const dataPaciente = {
-            nombreMascota,
-            dueno,
-            email,
-            Date,
-            sintomas
-        }
-        //Validar espacios vacios
-       if( [nombreMascota,dueno,email,Date,sintomas].includes('') ){
-           console.log('Hay al menos un campo vacio')
-           return;
-       }
-
-        
-        //4-reto Validacion de datos cuando los campos o un campo esta vacio tarea.
-        //usando javascrip
-        //en una sola linea
-        //usar arrayMethods
-        //si un solo campo queda vacio no generar el registro.
-
-        //3-mostramos en consola los datos
-        console.log(nombreMascota);
-        console.log(dataPaciente);
-
-        //5-Reiniciar el form
-        setNombreMascota('')
-        setNombreDueno('')
-        setEmail('')
-        setDate('')
-        setSintomas('')
+        const { nombreMascota, nombreDueno, email, fechaAlta, sintomasMascota } = e.target;
+        console.log(nombreMascota.value, nombreDueno.value, email.value, fechaAlta.value, sintomasMascota.value)
     }
 
     return (
@@ -69,8 +33,7 @@ export const Formulario = () => {
                         type="text"
                         placeholder="Mascota"
                         className="border-2 w-full p-2 mt-2 placeholder-blue-400 rounded-md"
-                        value={nombreMascota}
-                        onChange={(e) => setNombreMascota(e.target.value)}
+                        name="nombreMascota"
                     />
                 </div>
 
@@ -83,8 +46,7 @@ export const Formulario = () => {
                         type="text"
                         placeholder="Dueño"
                         className="border-2 w-full p-2 mt-2 placeholder-blue-400 rounded-md"
-                        value={dueno}
-                        onChange={(e) => setNombreDueno(e.target.value)}
+                        name="nombreDueno"
                     />
 
 
@@ -97,8 +59,7 @@ export const Formulario = () => {
                             type="Email"
                             placeholder="Email"
                             className="border-2 w-full p-2 mt-2 placeholder-blue-400 rounded-md"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            name="email"
                         />
                     </div>
 
@@ -111,8 +72,7 @@ export const Formulario = () => {
                             type="Date"
                             placeholder="Date"
                             className="border-2 w-full p-2 mt-2 placeholder text-blue-400 rounded-md"
-                            value={Date}
-                            onChange={(e) => setDate(e.target.value)}
+                            name="fechaAlta"
                         />
                     </div>
 
@@ -122,8 +82,7 @@ export const Formulario = () => {
                         </label>
                         <textarea
                             className="block text-gray-700 uppercase font-bold border-2 w-full p-2 mt-2 "
-                            value={sintomas}
-                            onChange={(e) => setSintomas(e.target.value)}
+                            name="sintomasMascota"
                         ></textarea>
                     </div>
 
@@ -137,4 +96,3 @@ export const Formulario = () => {
         </div>
     );
 }
-    
